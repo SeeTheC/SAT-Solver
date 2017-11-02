@@ -1,6 +1,6 @@
 all: SATSolver
 
-SATSolver: SATSolver.hs
+SATSolver: SATSolver.hs Parser.hs DataTypes.hs
 	ghc SATSolver.hs
 
 clean:

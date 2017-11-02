@@ -1,4 +1,9 @@
 module DataTypes where
 
-type Clause = [Int]
-type Symbol = Int
+type Symbol = [Char]
+type Symbols = [Symbol]
+type Literal = (Sign, Symbol)
+data Sign = P | N deriving (Show)
+
+type Clause = [Literal]
+type Clauses = [Clause]
