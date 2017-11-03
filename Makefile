@@ -1,4 +1,4 @@
-all: SATSolver
+	all: SATSolver
 
 SATSolver: SATSolver.hs Parser.hs DataTypes.hs
 	ghc SATSolver.hs
