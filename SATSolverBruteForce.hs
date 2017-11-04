@@ -2,7 +2,6 @@ import System.Environment
 import DataTypes
 import Parser
 import BruteforceSolver
-import DPLLSolver
 
 main = do
   (filename:_) <- getArgs
@@ -13,5 +12,5 @@ main = do
   putStrLn "Symbols:"
   print symbols
   putStrLn "---------------------------------------------"  
-  dSolver clauses
+  bSolver clauses
 

@@ -5,6 +5,10 @@ clause1=[[(P,"1"),(P,"2"),(P,"3"),(N,"4")],[(P,"2"),(N,"3"),(P,"5")],[(P,"4"),(N
 symbol1=["1","2","3","4","5"]
 state1 = initState symbol1
 
+clause2=[[(N,"2")],[(P,"4")],[(P,"1"),(P,"2"),(P,"3"),(N,"4")],[(P,"2"),(N,"3"),(P,"5")],[(P,"4"),(N,"1"),(N,"3")]]
+symbol2=["1","2","3","4","5"]
+state2 = initState symbol2
+
 -- Init all Symbols/Varibale to ND (not define)
 initState:: Symbols->State
 initState symbols=  (findLiteralVal symbolList)

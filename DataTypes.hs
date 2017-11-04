@@ -28,6 +28,10 @@ complement b | b == ND = ND
 signComplement::Sign->Boolean->Boolean
 signComplement sign val = if (sign==N) then (complement val) else val
 
+-- Complement the Literal Sign
+notLiteral::Literal->Literal
+notLiteral (sign,sym) | sign == N = (P,sym)
+                      | sign == P = (N,sym)             
 
 
 
