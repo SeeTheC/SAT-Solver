@@ -31,7 +31,4 @@ unique (x:xs) = x : unique (filter (x /=) xs)
 
 -- Takes Clauses
 -- Returns Symbols
-getSymbols clauses = do
-  let
-    symbols = unique $ removeSign $ mergeLists clauses :: Symbols
-  return symbols
+getSymbols clauses = unique $ removeSign $ mergeLists clauses :: Symbols

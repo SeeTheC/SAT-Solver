@@ -16,6 +16,10 @@ initState symbols=  (findLiteralVal symbolList)
 findLiteralVal:: SymbolsVal->Literal->Boolean
 findLiteralVal symbolList (sign,sym)  = [ signComplement sign val | (s,val)<-symbolList, sym==s ] !!0
 
+-- Convert Symbol Assignment to State
+convertAssignToState:: SymbolsVal->Literal->Boolean
+convertAssignToState assign= findLiteralVal assign
+
 updateState::State->SymbolVal->State
 updateState state (sym,val)= (\literal@(sign,s)-> if (s==sym ) then (signComplement sign  val) else (state literal) )
 
@@ -31,3 +35,13 @@ subEval clause state = if (length trueLiteral) > 0 then T else (if (length ndLit
                        trueLiteral=[ literal  | literal<-clause, (state literal) == T]
                        ndLiteral=[ literal  | literal<-clause, (state literal) == ND]
 
+-- Given a set of clauses in CNF and a state, will evalute the expression and covert result into
+-- SatResult format
+evalSat::Clauses->State->SatResult
+evalSat clauses state = if result == T then (Satisfiable,state)
+                        else (NotSatisfiable,state)
+                        where result= eval clauses state
+
+convertToSatResult::Boolean->State->SatResult
+convertToSatResult result state =if result == T then (Satisfiable,state) 
+                                 else (NotSatisfiable,state)

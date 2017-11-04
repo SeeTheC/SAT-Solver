@@ -1,6 +1,6 @@
-	all: SATSolver
+all: SATSolver
 
-SATSolver: SATSolver.hs Parser.hs DataTypes.hs
+SATSolver: SATSolver.hs Parser.hs DataTypes.hs CommonFunLib.hs BruteforceSolver.hs
 	ghc SATSolver.hs
 
 clean:
