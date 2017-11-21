@@ -26,6 +26,7 @@ convertAssignToState assign= findLiteralVal assign
 
 updateState::State->SymbolVal->State
 updateState state (sym,val)= (\literal@(sign,s)-> if (s==sym ) then (signComplement sign  val) else (state literal) )
+----------------------------------------------------------------
 
 -- Given a set of clauses in CNF and a state, will evalute the expression
 eval::Clauses->State->Boolean

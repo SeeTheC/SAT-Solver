@@ -43,8 +43,10 @@ updateStateByLiteral state ((sign,sym):ls) = updateStateByLiteral us ls
 
 dSolver clauses = do
                   putStr "\nResult:"
-                  print status                  
-                  putStrLn "\nAssignments:"
+                  print status             
+                  putStr "\nVerify Computed Result:"
+                  print (eval clauses state)      
+                  putStrLn "\nAssignments:"                  
                   print assignment
                   where 
                   symbols= (getSymbols clauses)

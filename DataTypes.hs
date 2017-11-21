@@ -1,4 +1,5 @@
 module DataTypes where
+import Data.List
 
 -- P: Positive N: Negative/Complement
 data Sign = P | N deriving (Show,Eq)
@@ -33,6 +34,10 @@ notLiteral::Literal->Literal
 notLiteral (sign,sym) | sign == N = (P,sym)
                       | sign == P = (N,sym)             
 
-
-
+-- Sort SymbolVal
+sortSymbolVal:: [SymbolVal] -> [SymbolVal]
+sortSymbolVal symList = sortBy symbolValComparitor symList
+                    where symbolValComparitor (sym1,_) (sym2,_)= if (sym1 ==sym2) then EQ 
+                                                                 else if (sym1 < sym2) then LT
+                                                                 else GT 
 

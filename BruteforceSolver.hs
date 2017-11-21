@@ -37,4 +37,4 @@ bSolver clauses = do
                   where 
                   symbols= (getSymbols clauses)
                   (status, state)=bruteForceSolver clauses symbols
-                  assignment= [ (sym, state (P,sym))  | sym<-symbols ]
+                  assignment= sortSymbolVal  [ (sym, state (P,sym))  | sym<-symbols ]
