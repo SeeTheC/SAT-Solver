@@ -30,13 +30,13 @@ updateState state (sym,val)= (\literal@(sign,s)-> if (s==sym ) then (signComplem
 
 -- Given a set of clauses in CNF and a state, will evalute the expression
 eval::Clauses->State->Boolean
-eval clauses state = if (F `elem` result) then F else (if (ND `elem` result) then ND else T)  
+eval clauses state = if (F `elem` result) then F else (if (ND `elem` result) then ND else T)
                      where result=[ (subEval sc state)  | sc<-clauses]
 
 -- Given one clause and a state, will evalute the expression
 subEval::Clause->State->Boolean
 subEval clause state = if (length trueLiteral) > 0 then T else (if (length ndLiteral) > 0 then ND else F)
-                       where 
+                       where
                        trueLiteral=[ literal  | literal<-clause, (state literal) == T]
                        ndLiteral=[ literal  | literal<-clause, (state literal) == ND]
 
@@ -48,5 +48,5 @@ evalSat clauses state = if result == T then (Satisfiable,state)
                         where result= eval clauses state
 
 convertToSatResult::Boolean->State->SatResult
-convertToSatResult result state =if result == T then (Satisfiable,state) 
+convertToSatResult result state =if result == T then (Satisfiable,state)
                                  else (NotSatisfiable,state)

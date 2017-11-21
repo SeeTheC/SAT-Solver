@@ -4,7 +4,7 @@ import Data.List
 -- P: Positive N: Negative/Complement
 data Sign = P | N deriving (Show,Eq)
 --T: True, F: False, ND: Not define
-data Boolean = T | F | ND deriving (Show,Eq)
+data Boolean = T | F | ND deriving (Show,Eq,Read)
 -- Where solution to SAT Formula exists or not
 data Satisfiability = Satisfiable | NotSatisfiable deriving (Show,Eq)
 
@@ -32,12 +32,11 @@ signComplement sign val = if (sign==N) then (complement val) else val
 -- Complement the Literal Sign
 notLiteral::Literal->Literal
 notLiteral (sign,sym) | sign == N = (P,sym)
-                      | sign == P = (N,sym)             
+                      | sign == P = (N,sym)
 
 -- Sort SymbolVal
 sortSymbolVal:: [SymbolVal] -> [SymbolVal]
 sortSymbolVal symList = sortBy symbolValComparitor symList
-                    where symbolValComparitor (sym1,_) (sym2,_)= if (sym1 ==sym2) then EQ 
+                    where symbolValComparitor (sym1,_) (sym2,_)= if (sym1 ==sym2) then EQ
                                                                  else if (sym1 < sym2) then LT
-                                                                 else GT 
-
+                                                                 else GT

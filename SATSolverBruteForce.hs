@@ -11,6 +11,5 @@ main = do
   print clauses
   putStrLn "Symbols:"
   print symbols
-  putStrLn "---------------------------------------------"  
+  putStrLn "---------------------------------------------"
   bSolver clauses
-

@@ -12,6 +12,7 @@ main = do
   print clauses
   putStrLn "Symbols:"
   print symbols
-  putStrLn "---------------------------------------------"  
-  dSolver clauses
-
+  putStrLn "---------------------------------------------"
+  assignment <- dSolver clauses
+  putStrLn "\nAssignments:"
+  print assignment
