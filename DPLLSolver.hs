@@ -13,12 +13,14 @@ dpllSolver' clauses state
                        | clauses == [] = convertToSatResult T state
                        | ([] `elem` clauses)  = convertToSatResult F state
                        -- Checking for unit clause
-                       | (length uc) /= 0 =  dpllSolver' (simplify clauses uc) (updateStateByLiteral state uc)
+                       | (length uc) /= 0  && validUC =  dpllSolver' (simplify clauses uc) (updateStateByLiteral state uc)
                        | otherwise = if (fst trueSymSolver) == Satisfiable
                                      then trueSymSolver
                                      else falseSymSolver
                        where
                        uc = unitClause clauses
+                       --uc = [(P,"114"),(N,"114")] this is invalid as both complement exist
+                       validUC= and [ (notLiteral l) `notElem` uc | l<-uc]
                        sym= head $ getSymbols clauses
                        trueSymSolver = dpllSolver' (simplify clauses [(P,sym)] )  (updateStateByLiteral state [(P,sym)])
                        falseSymSolver= dpllSolver' (simplify clauses [(N,sym)] )  (updateStateByLiteral state [(N,sym)])
