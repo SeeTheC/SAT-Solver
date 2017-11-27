@@ -15,7 +15,7 @@ c) Run Sudoku solver
 $> ./SudokuSolver <sudoku_clauese_filename>
 
 ---
-Example:
+## Example:
 
 a) Run DPLL SAT Solver  
 $> ./SATSolver cnf2.txt
