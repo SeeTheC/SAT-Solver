@@ -1,6 +1,0 @@
-*.hi
-*.o
-SATSolver
-SudokuSolver
-SATSolverBruteForce
-temp.hs
